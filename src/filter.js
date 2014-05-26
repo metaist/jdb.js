@@ -43,8 +43,29 @@ define(['./_', './core'], function (_, jdb) {
     '=': function (a, b) { return _.isEqual(a, b); },
     '>': function (a, b) { return a > b; },
     '>=': function (a, b) { return a >= b; },
-    'in': function (a, b) { return _.inArray(a, b); },
-    'regex': function (a, b) { return b.test(a); }
+    'regex': function (a, b) { return b.test(a); },
+    'in': function (a, b) {
+      var result = false;
+      if (_.isArray(a)) {
+        _.each(a, function (t) {
+          result = result || jdb.cmp['in'](t, b);
+          if (result) { return _.END_LOOP; }
+        });
+        return result;
+      }//end if: processed array
+
+      _.each(b, function (t) {
+        switch(_.type(t)) {
+        case 'regexp':
+          result = result || t.test(a);
+          break;
+        default:
+          result = result || jdb.cmp['='](a, t);
+        }//end switch
+        if (result) { return _.END_LOOP; }
+      });
+      return result;
+    },
   };
 
   // Internal field checker.

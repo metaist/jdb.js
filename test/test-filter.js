@@ -48,6 +48,26 @@ define(function (require) {
     deepEqual(db.select(false), tmp, 'Expect filtered results.');
   });
 
+  test('shorthand regex array', function () {
+    var R1 = /^H/, R2 = / .*e/;
+    db = jdb(S.records()).find({name: [R1, R2]});
+    tmp = S.records().filter(function (i) { return R1.test(i.name) || R2.test(i.name); });
+
+    deepEqual(db.select(false), tmp, 'Expect filtered results.');
+  });
+
+  test('shorthand array-to-array', function () {
+    var R1 = /^H/;
+    db = jdb(S.records());
+    db.each(function (record) {
+      record.vals = [record.name, record.name.split('').reverse().join('')];
+    });
+    db = db.find({vals: [/^H/, /H$/]});
+    tmp = S.records().filter(function (i) { return R1.test(i.name); });
+    
+    deepEqual(db.select({_id: false, vals: false}), tmp, 'Expect filtered results.');
+  });
+
   test('chained', function () {
     db = jdb(S.records()).filter(S.isMale).find({age: { '!>': 20, '<': 50 }});
     tmp = S.records().filter(function (i) { return 'M' === i.gender && i.age <= 20 && i.age < 50; });
