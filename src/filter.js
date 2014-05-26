@@ -87,6 +87,9 @@ define(['./_', './core'], function (_, jdb) {
         case 'array': // shorthand: {field: [val, val]}
           result = result && check_field(item, item[field], 'in', subrule);
           break;
+        case 'regexp': // shorthand: {field: /regex/}
+          result = result && check_field(item, item[field], 'regex', subrule);
+          break;
         case 'function': // custom: {field: function (item, val) { return true; })
           result = result && subrule.call(item, item, item[field]);
           break;

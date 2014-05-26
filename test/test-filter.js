@@ -70,6 +70,14 @@ define(function (require) {
     deepEqual(db.select(false), tmp, 'Expect filtered results.');
   });
 
+  test('shorthand regex', function () {
+    var R = /^H/;
+    db = jdb(S.records()).find({name: R});
+    tmp = S.records().filter(function (i) { return R.test(i.name); });
+
+    deepEqual(db.select(false), tmp, 'Expect filtered results.');
+  });
+
   test('slice', function () {
     db = jdb(S.records()).slice(1, 2);
     tmp = S.records().slice(1, 2);
@@ -90,7 +98,7 @@ define(function (require) {
 
     deepEqual(db.select(false), tmp, 'Expect filtered results.');
   });
-  
+
   test('first', function () {
     db = jdb(S.records()).slice(1).first();
     tmp = S.records().slice(1, 2);
