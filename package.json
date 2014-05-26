@@ -1,0 +1,51 @@
+{
+  "name": "jdb",
+  "version": "0.0.1-pre",
+  "title": "jdb",
+  "description": "Lightweight client-side cache with events.",
+  "main": "dist/jdb.js",
+  "homepage": "https://github.com/metaist/jdb.js",
+  "bugs": "https://github.com/metaist/jdb.js/issues",
+  "docs": "https://github.com/metaist/jdb.js/wiki",
+  "download": "https://github.com/metaist/jdb.js/releases/latest",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metaist/jdb.js"
+  },
+  "keywords": [
+    "javascript",
+    "cache"
+  ],
+  "author": {
+    "name": "metaist",
+    "url": "https://github.com/metaist"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "0.4.2",
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-compress": "^0.8.0",
+    "grunt-contrib-concat": "0.4.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-qunit": "^0.4.0",
+    "grunt-contrib-requirejs": "^0.4.3",
+    "grunt-contrib-uglify": "0.4.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jsonlint": "^1.0.4",
+    "load-grunt-tasks": "0.4.0",
+    "requirejs": "2.1.11"
+  },
+  "scripts": {
+    "build": "npm install && grunt",
+    "start": "grunt watch",
+    "test": "grunt"
+  }
+}
