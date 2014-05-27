@@ -40,11 +40,26 @@ define(function (require) {
     db = jdb(S.records());
     db.filter(S.isMale).update({updated: true});
 
-    db.end().each(function () {
+    db.each(function () {
       if (S.isMale(this)) {
         ok(this.updated, 'Expect updated item.');
       } else {
         ok(!this.updated, 'Expect untouched item.');
+      }
+    });
+  });
+  
+  test('using function', function () {
+    expect(S.records().length);
+
+    db = jdb(S.records());
+    db.update({isMale: S.isMale});
+
+    db.each(function () {
+      if (S.isMale(this)) {
+        ok(this.isMale, 'Expect male.');
+      } else {
+        ok(!this.isMale, 'Expect female.');
       }
     });
   });

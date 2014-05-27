@@ -101,6 +101,7 @@ define(['./_', './core'], function (_, jdb) {
     _.each(items, function (item) {
       diff = {};
       _.each(changes, function (v, k) {
+        if (_.isFunction(v)) { v = v.call(item, item); }
         if (v !== item[k]) {
           diff[k] = v;
           item[k] = v;
