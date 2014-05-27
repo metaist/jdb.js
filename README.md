@@ -1,7 +1,7 @@
 # jdb.js  [![Build Status](https://travis-ci.org/metaist/jdb.js.svg?branch=master)](https://travis-ci.org/metaist/jdb.js)
 [Latest Release] - [Documentation] - [Issues]
 
-_JavaScript client-side event-driven cache._
+_[jQuery] for [JSON] objects._
 
 [Latest Release]: https://github.com/metaist/jdb.js/releases/latest
 [Documentation]: https://github.com/metaist/jdb.js/wiki
@@ -9,7 +9,8 @@ _JavaScript client-side event-driven cache._
 
 ## Why?
 I need something like [jQuery] for [JSON] objects that's between
-[localStorage] and [IndexedDB].
+[localStorage] and [IndexedDB] and acts like a client-side event-driven
+cache. 
 
 [jQuery]: http://jquery.com/
 [JSON]: http://www.json.org/
