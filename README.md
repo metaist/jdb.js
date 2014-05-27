@@ -20,7 +20,7 @@ I need something like [jQuery] for [JSON] objects that's between
 Store a bunch of records.
 ```javascript
 var db = jdb([{id: 1, name: 'John Smith', gender: 'M'},
-              {id: 2, name: 'Jane Doe', gender: 'F'});
+              {id: 2, name: 'Jane Doe', gender: 'F'}]);
 // db is an array-like object with two records
 ```
 
