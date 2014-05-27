@@ -1,7 +1,7 @@
-# jdb.js  [![Build Status](https://travis-ci.org/metaist/jdb.js.svg?branch=master)](https://travis-ci.org/metaist/jdb.js)
+# jdb.js [![Build Status](https://travis-ci.org/metaist/jdb.js.svg?branch=master)](https://travis-ci.org/metaist/jdb.js)
 [Latest Release] - [Documentation] - [Issues]
 
-_[jQuery] for [JSON] objects._
+_Like [jQuery] for [JSON] objects._
 
 [Latest Release]: https://github.com/metaist/jdb.js/releases/latest
 [Documentation]: https://github.com/metaist/jdb.js/wiki
