@@ -84,14 +84,14 @@ define(['./_', './core'], function (_, jdb) {
 
   // Internal filter function.
   // See: http://docs.mongodb.org/manual/tutorial/query-documents/
-  var check_rule = function (item, rule) {
+  jdb.test = function (item, rule) {
     var result = false;
 
     switch (_.type(rule)) {
     case 'array': // OR
       result = false;
       _.each(rule, function (subrule) {
-        result = result || check_rule(item, subrule);
+        result = result || jdb.test(item, subrule);
         if (result) { return _.END_LOOP; } // short-circuit
       });
       break;
@@ -133,7 +133,7 @@ define(['./_', './core'], function (_, jdb) {
     if (!selector) { return this; }
     if (!_.isFunction(selector)) {
       var criteria = selector;
-      selector = function (item) { return check_rule(item, criteria); };
+      selector = function (item) { return jdb.test(item, criteria); };
     }//end if: have a selector
 
     var obj = jdb();

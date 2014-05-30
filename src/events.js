@@ -10,8 +10,11 @@ define(['./_', './core'], function (_, jdb) {
   // Attach an event handler.
   fn.on = function (events, callback) {
     var db = this._root || this;
-    _.each(events.match(rnotwhite), function (name) {
-      if (!_.inArray(callback, db._on[name])) { db._on[name].push(callback); }
+    _.each(events.match(rnotwhite), function (event) {
+      event = event.toLowerCase();
+      if (!_.inArray(callback, db._on[event])) {
+        db._on[event].push(callback);
+      }//end if: added callback
     });
     return db;
   };
@@ -20,6 +23,7 @@ define(['./_', './core'], function (_, jdb) {
   fn.off = function (events, callback) {
     var db = this._root || this;
     _.each(events.match(rnotwhite), function (event) {
+      event = event.toLowerCase();
       if (!callback) { // clear all
         db._on[event] = {};
       } else { // clear one callback
@@ -38,6 +42,7 @@ define(['./_', './core'], function (_, jdb) {
     args = args || [];
 
     _.each(events.match(rnotwhite), function (name) {
+      name = name.toLowerCase();
       if (!rbefore.test(name)) {
         args.unshift(items);
         _.each(db._on[name], function (f) { f.apply(items, args); });
